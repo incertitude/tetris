@@ -1,0 +1,14 @@
+.model{
+    width: 7px;
+    height: 7px;
+    border: solid 1px #d8d8d8; 
+    color: purple
+}
+
+.line1, .line2, .line3, .line4{
+    float: left;
+}
+
+.translateSelect{ 
+    transform: translateY(9px);
+}
