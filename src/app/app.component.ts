@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ElementRef, AfterViewInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -6,7 +6,8 @@ import {Observable} from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit, OnInit {
+  constructor(private elem: ElementRef) {}
   public elem_Color;
   public elem_Model;
   title = 'app';
@@ -15,11 +16,23 @@ export class AppComponent implements OnInit {
    'gold' , 'chocolate' , '#bc10bc' , 'deeppink' ];
   private arrayOfModels: number[] = [0, 1 , 2 , 3 , 4 ];
   private modelsIndex: number;
-  ngOnInit() {
 
+  ngAfterViewInit() {
+    const main = document.getElementById('main-container');
+    main.focus();
+    main.addEventListener('keydown', this.rotateElem.bind(this));
+  }
+  ngOnInit() {
     this.colorIndex = Math.floor( Math.random() * 10);
     this.modelsIndex = Math.floor( Math.random() * 5);
     this.elem_Color = this.arrayOfColors[this.colorIndex];
     this.elem_Model = this.arrayOfModels[this.modelsIndex];
+  }
+
+  rotateElem(key) {
+    if (key.keyCode < 41 && key.keyCode > 36) {
+      console.log(key.code);
+
+    }
   }
 }
