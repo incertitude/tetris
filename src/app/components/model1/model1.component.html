@@ -1,26 +1,29 @@
-<div class="line1">
-  <div class="model"
-    *ngFor="let i of indexLine1"
-    [ngStyle]="{'background-color':elemColor}">
-  </div>
+<div>
+    <div class="line1">
+        <div class="model"
+          *ngFor="let i of indexLine1"
+          [ngStyle]="{'background-color':elemColor}">
+        </div>
+      </div>
+      <div class="line2">
+        <div class="model" 
+            *ngFor="let i of indexLine2"
+            [ngClass]="{'translateSelect': indexLine2.length == 2 && i==1}"
+            [ngStyle]="{'background-color':elemColor}">
+        </div>
+      </div>
+      <div class="line3">
+        <div class="model" 
+            *ngFor="let i of indexLine3"
+            [ngStyle]="{'background-color':elemColor}">
+        </div>
+      </div>
+      <div class="line4">
+        <div class="model" 
+            *ngFor="let i of indexLine4"
+            [ngStyle]="{'background-color':elemColor}">
+        </div>
+      </div>
 </div>
-<div class="line2">
-  <div class="model" 
-      *ngFor="let i of indexLine2"
-      [ngClass]="{'translateSelect': indexLine2.length == 2 && i==1}"
-      [ngStyle]="{'background-color':elemColor}">
-  </div>
-</div>
-<div class="line3">
-  <div class="model" 
-      *ngFor="let i of indexLine3"
-      [ngStyle]="{'background-color':elemColor}">
-  </div>
-</div>
-<div class="line4">
-  <div class="model" 
-      *ngFor="let i of indexLine4"
-      [ngStyle]="{'background-color':elemColor}">
-  </div>
-</div>
+
 
