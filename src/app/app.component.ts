@@ -1,5 +1,5 @@
 import { Component, OnInit , ElementRef, AfterViewInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   constructor(private elem: ElementRef) {}
   public elem_Color;
   public elem_Model;
+  public rotateLeftSubject = new Subject<boolean>();
   title = 'app';
   public colorIndex: number;
   private arrayOfColors: string[] = ['violet' , 'skyblue' , 'red', 'black', 'greenyellow', '#00b0ff',
@@ -20,7 +21,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     const main = document.getElementById('main-container');
     main.focus();
-    main.addEventListener('keydown', this.rotateElem.bind(this));
+    main.addEventListener('keydown', this.manageElem.bind(this));
   }
   ngOnInit() {
     this.colorIndex = Math.floor( Math.random() * 10);
@@ -29,10 +30,32 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.elem_Model = this.arrayOfModels[this.modelsIndex];
   }
 
-  rotateElem(key) {
-    if (key.keyCode < 41 && key.keyCode > 36) {
-      console.log(key.code);
-
+  manageElem(key) {
+    switch (key.keyCode) {
+      case 37 : {
+        this.leftRotate();
+        break;
+      }
+      case 39 : {
+        this.rightRotate();
+        break;
+      }
+      case 40 : {
+        this.speedUp();
+        break;
+      }
     }
+  }
+
+  leftRotate() {
+    this.rotateLeftSubject.next(true);
+  }
+
+  rightRotate() {
+    console.log('right');
+  }
+
+  speedUp() {
+    console.log('speed');
   }
 }

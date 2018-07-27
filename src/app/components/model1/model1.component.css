@@ -12,3 +12,7 @@
 .translateSelect{ 
     transform: translateY(9px);
 }
+
+.rotateLeft{
+    background-color: plum !important;
+}

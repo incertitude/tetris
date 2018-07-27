@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-model1',
   templateUrl: './model1.component.html',
@@ -9,12 +10,16 @@ export class Model1Component implements OnInit {
   indexLine2: number[];
   indexLine3: number[];
   indexLine4: number[];
-
+  public rotateLeft: boolean;
   constructor() { }
   @Input () elemColor: string;
   @Input () elemModel: number;
+  @Input () elemRotate = new Subject<boolean>();
   ngOnInit() {
     this.selectModel(this.elemModel);
+    this.elemRotate.subscribe(x => {
+      this.rotateLeft = true;
+ });
   }
 
   selectModel(model) {
